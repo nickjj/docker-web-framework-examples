@@ -17,6 +17,8 @@ services:
     env_file:
       - ".env"
       - ".env.production"
+    depends_on:
+      - "postgres"
     volumes:
       - "$PWD:/app"
     ports:
