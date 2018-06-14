@@ -9,6 +9,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
+  - touch rails/.env.production node/.env.production
+
   - cd flask
   - docker-compose up --build -d
   - >
@@ -44,7 +46,7 @@ script:
     && (echo 'CSS file test: pass' && exit 0)
     || (echo 'CSS file test: fail' && exit 1)
   - >
-    cat public/js.css
+    cat public/js/app.css
     && (echo 'JS file test: pass' && exit 0)
     || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
