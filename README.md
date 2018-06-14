@@ -37,3 +37,19 @@ cd docker-web-framework-examples
 
 **You'll find a `README.md` file in each folder with specific instructions and
 notes for that framework / language**.
+
+## Supported Frameworks / Languages
+
+This list is ever growing, so if you don't see your web framework of choice,
+send a PR.
+
+- [Flask](https://github.com/nickjj/docker-web-framework-examples/tree/master/flask)
+- [Rails](https://github.com/nickjj/docker-web-framework-examples/tree/master/rails)
+- [Node / Express](https://github.com/nickjj/docker-web-framework-examples/tree/master/node)
+- [Webpack](https://github.com/nickjj/docker-web-framework-examples/tree/master/webpack)
+
+## Contributing
+
+Whether you're fixing a bug, improving an existing app or creating a new
+example app, your efforts are very much appreciated! Check out the
+[contributing documentation](https://github.com/nickjj/docker-web-framework-examples/blob/master/CONTRIBUTING.md).
