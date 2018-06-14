@@ -24,6 +24,8 @@ script:
   - cd ../rails
   - docker-compose up --build -d
   - sleep 30
+  - docker-compose exec web rails db:create
+  - sleep 10
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
     | grep -q '200'
