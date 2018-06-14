@@ -15,7 +15,7 @@ configured in such a way that the interactive debugger works with gunicorn
 - A health check URL was added at `/healthy`
 
 Looking for a more complete Flask application? Check out the
-[Build a SAAS App with Flask course](https://buildasaasappwithflask.com??utm_source=github&utm_medium=docker-examples&utm_campaign=flask)
+[Build a SAAS App with Flask course](https://buildasaasappwithflask.com??utm_source=github&utm_medium=docker-examples&utm_campaign=flask).
 
 ## Trying Out the App
 
