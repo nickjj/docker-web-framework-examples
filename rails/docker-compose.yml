@@ -1,0 +1,26 @@
+version: "3.6"
+
+services:
+  postgres:
+    image: "postgres:10.4-alpine"
+    env_file:
+      - ".env"
+      - ".env.production"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+
+  web:
+    build:
+      context: ".""
+      args:
+        - RAILS_ENV=development
+    env_file:
+      - ".env"
+      - ".env.production"
+    volumes:
+      - "$PWD:/app"
+    ports:
+      - "8000:8000"
+
+volumes:
+  postgres: {}
