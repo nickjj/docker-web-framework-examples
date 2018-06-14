@@ -13,6 +13,7 @@ script:
 
   - cd flask
   - docker-compose up --build -d
+  - sleep 30
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
     | grep -q '200'
@@ -22,6 +23,7 @@ script:
 
   - cd ../rails
   - docker-compose up --build -d
+  - sleep 30
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
     | grep -q '200'
@@ -31,6 +33,7 @@ script:
 
   - cd ../node
   - docker-compose up --build -d
+  - sleep 30
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
     | grep -q '200'
