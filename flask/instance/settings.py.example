@@ -1,0 +1,4 @@
+DEBUG = False
+
+# Change localhost to your domain name (and remove the port if you use a proxy).
+SERVER_NAME = 'localhost:8000'

@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+  web:
+    build: "."
+    command: >
+      gunicorn --reload -c "python:config.gunicorn"  "hello.app:create_app()"
+    env_file:
+      - ".env"
+    volumes:
+      - "$PWD:/app"
+    ports:
+      - "8000:8000"
