@@ -49,7 +49,7 @@ script:
     && (echo 'CSS file test: pass' && exit 0)
     || (echo 'CSS file test: fail' && exit 1)
   - >
-    cat public/js/app.css
+    cat public/js/app.js
     && (echo 'JS file test: pass' && exit 0)
     || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
