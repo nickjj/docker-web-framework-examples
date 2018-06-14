@@ -1,0 +1,44 @@
+---
+
+services: "docker"
+
+script:
+  - cd flask
+  - docker-compose up --build -d
+  - >
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
+    | grep -q '200'
+    && (echo 'HTTP test: pass' && exit 0)
+    || (echo 'HTTP test: fail' && exit 1)
+  - docker-compose down -v
+
+  - cd ../rails
+  - docker-compose up --build -d
+  - >
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
+    | grep -q '200'
+    && (echo 'HTTP test: pass' && exit 0)
+    || (echo 'HTTP test: fail' && exit 1)
+  - docker-compose down -v
+
+  - cd ../node
+  - docker-compose up --build -d
+  - >
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
+    | grep -q '200'
+    && (echo 'HTTP test: pass' && exit 0)
+    || (echo 'HTTP test: fail' && exit 1)
+  - docker-compose down -v
+
+  - cd ../webpack
+  - docker-compose build
+  - docker-compose run webpack yarn run build
+  - >
+    cat public/css/app.css
+    && (echo 'CSS file test: pass' && exit 0)
+    || (echo 'CSS file test: fail' && exit 1)
+  - >
+    cat public/js.css
+    && (echo 'JS file test: pass' && exit 0)
+    || (echo 'JS file test: fail' && exit 1)
+  - docker-compose down -v
