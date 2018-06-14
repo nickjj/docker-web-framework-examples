@@ -1,0 +1,13 @@
+{
+  "repository": {},
+  "dependencies": {
+    "express": "~4.16"
+  },
+  "devDependencies": {
+    "nodemon": "~1.17"
+  },
+  "scripts": {
+    "development": "/node_modules/nodemon/bin/nodemon.js --legacy-watch hello/index.js",
+    "production": "node hello/index.js"
+  }
+}
