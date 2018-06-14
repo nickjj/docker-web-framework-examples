@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/nickjj/docker-web-framework-examples.svg?branch=master)](https://travis-ci.com/nickjj/docker-web-framework-examples)
+
 # Example Apps Showing You How to Use Docker with Your Favorite Web Frameworks
 
 *But aren't there a million tutorials out there that do this already?*
