@@ -3,7 +3,7 @@
 Woohoo, congrats on wanting to contribute! Your efforts will be much appreciated.
 
 This page contains information about how you can modify an existing example app
-or add a new framework.
+or add a new application.
 
 ## Topics
 
