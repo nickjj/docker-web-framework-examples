@@ -1,4 +1,4 @@
-# Contributing to the Docker Web Framework Examples
+# Contributing to the Docker Web Framework Examples Repo
 
 Woohoo, congrats on wanting to contribute! Your efforts will be much appreciated.
 

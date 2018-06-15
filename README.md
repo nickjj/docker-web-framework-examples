@@ -41,7 +41,7 @@ notes for that framework / language**.
 ## Supported Frameworks / Languages
 
 This list is ever growing, so if you don't see your web framework of choice,
-send a PR.
+open a PR.
 
 - [Flask](https://github.com/nickjj/docker-web-framework-examples/tree/master/flask)
 - [Node / Express](https://github.com/nickjj/docker-web-framework-examples/tree/master/node)
