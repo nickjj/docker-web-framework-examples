@@ -2,12 +2,23 @@
 
 set -e
 
-# Generate a mix.lock file if it doesn't exist. This should only happen on
-# brand new projects where mix deps.get was never ran before.
+built_lock_file="/elixir/mix.lock"
+current_lock_file="/app/mix.lock"
+
+function cp_built_lock_file() {
+    cp "${built_lock_file}" "${current_lock_file}"
+}
+
+# This avoids your app mount clobbering the "real" mix.lock file that was
+# created when building your dependencies using docker build.
 #
-# This avoids having to ever run mix deps.get manually.
-if [ ! -f "/app/mix.lock" ]; then
-    mix deps.get
+# See: https://github.com/nickjj/docker-web-framework-examples/issues/1
+if [ -f "${current_lock_file}" ]; then
+    if [ diff "${built_lock_file}" "${current_lock_file}" != "" ]; then
+        cp_built_lock_file
+    fi
+else
+    cp_built_lock_file
 fi
 
 exec "$@"

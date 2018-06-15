@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY mix* ./
 RUN mix local.hex --force && mix local.rebar --force \
-    && mix deps.get && mix deps.compile
+    && mix deps.get && mix deps.compile && cp mix.lock /elixir
 
 COPY . .
 
