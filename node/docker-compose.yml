@@ -3,7 +3,7 @@ version: "3.6"
 services:
   web:
     build:
-      context: "."
+      context: "$PWD"
       args:
         - NODE_ENV=development
     command: yarn run development

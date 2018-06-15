@@ -10,7 +10,7 @@ services:
 
   webpack:
     build:
-      context: "."
+      context: "$PWD"
       dockerfile: "Dockerfile.webpack"
     command: yarn run watch
     ports:
@@ -20,7 +20,7 @@ services:
       - "static:/app/priv/static"
 
   web:
-    build: "."
+    build: "$PWD"
     stdin_open: true
     tty: true
     depends_on:

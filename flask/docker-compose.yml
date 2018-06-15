@@ -2,9 +2,9 @@ version: "3.6"
 
 services:
   web:
-    build: "."
+    build: "$PWD"
     command: >
-      gunicorn --reload -c "python:config.gunicorn"  "hello.app:create_app()"
+      gunicorn --reload -c "python:config.gunicorn" "hello.app:create_app()"
     env_file:
       - ".env"
     volumes:
