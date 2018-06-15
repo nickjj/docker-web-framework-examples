@@ -60,6 +60,7 @@ and copy that style
 - Don't forget to add any sensitive files such as `.env.production`
 - When in doubt, look at the
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/.dockerignore)
+and copy that style
 
 ### Default URL Endpoints
 
