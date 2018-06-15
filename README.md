@@ -44,8 +44,9 @@ This list is ever growing, so if you don't see your web framework of choice,
 send a PR.
 
 - [Flask](https://github.com/nickjj/docker-web-framework-examples/tree/master/flask)
-- [Rails](https://github.com/nickjj/docker-web-framework-examples/tree/master/rails)
 - [Node / Express](https://github.com/nickjj/docker-web-framework-examples/tree/master/node)
+- [Phoenix](https://github.com/nickjj/docker-web-framework-examples/tree/master/phoenix)
+- [Rails](https://github.com/nickjj/docker-web-framework-examples/tree/master/rails)
 - [Webpack](https://github.com/nickjj/docker-web-framework-examples/tree/master/webpack)
 
 ## Contributing
