@@ -32,31 +32,35 @@ libs, but they are by no means a Flask default.
 
 #### Dockerfile
 
+- Use Alpine as a base image unless you can't due to technical reasons
 - Pin versions to at least the minor version, example: `2.5-alpine` not `2-alpine`
-- Feel free to include your own name in the `LABEL` when adding new frameworks
-- `EXPOSE 8000` unless there's a very very strong reason not to do so
+- Feel free to include your own name in the `LABEL` when adding new apps
+- Only include `ARG` and `ENV` instructions if you really need them
+- Use `/app` to store your app's code and set it as the `WORKDIR` (if it makes sense)
+- Take advantage of package manager / Docker layer caching techniques
+- If your app is a web service, `EXPOSE 8000` unless you have a strong reason not to
 - Always include a `curl` driven `HEALTHCHECK`
-- Only include build args / env variables if you really need it
-- Use `/app` when setting up the `WORKDIR` unless it doesn't make sense
-- Be sure to take advantage of package manager / Docker layer caching techniques
 - Stick to the `[]` syntax when supplying your `CMD` instructions
-- When in doubt, look at the
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/Dockerfile)
 and copy that style
 
 #### docker-compose.yml
 
+- List your services in the order you expect them to start
+- Alphabetize each service's properties
 - Double quote all strings and use `{}` for empty hashes
 - Pin versions to at least the minor version, example: `10.4-alpine` not `10-alpine`
-- Use `$PWD` instead of "." for the current directory
-- Prefer `build: "."` unless you need to use `args` or some other sub-property
-- Publish on port `8000` unless there's a very very strong reason not to do so
+- Use `$PWD` instead of "." for when you need the current directory's path
+- Prefer `build: "$PWD"` unless you need to use `args` or some other sub-property
+- If your service is a web service, publish port `8000` unless it doesn't make sense to
 - When in doubt, look at the
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/docker-compose.yml)
 and copy that style
 
 #### .dockerignore
 
+- Don't forget to create this file :D
+- Don't forget to add the `.git` folder
 - Don't forget to add any sensitive files such as `.env.production`
 - When in doubt, look at the
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/.dockerignore)
