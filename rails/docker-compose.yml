@@ -14,11 +14,11 @@ services:
       context: "$PWD"
       args:
         - RAILS_ENV=development
+    depends_on:
+      - "postgres"
     env_file:
       - ".env"
       - ".env.production"
-    depends_on:
-      - "postgres"
     ports:
       - "8000:8000"
     volumes:
