@@ -7,7 +7,7 @@ services:
       gunicorn --reload -c "python:config.gunicorn" "hello.app:create_app()"
     env_file:
       - ".env"
-    volumes:
-      - "$PWD:/app"
     ports:
       - "8000:8000"
+    volumes:
+      - "$PWD:/app"

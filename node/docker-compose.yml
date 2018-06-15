@@ -7,10 +7,10 @@ services:
       args:
         - NODE_ENV=development
     command: yarn run development
-    ports:
-      - "8000:8000"
     env_file:
       - ".env"
       - ".env.production"
+    ports:
+      - "8000:8000"
     volumes:
       - "$PWD:/app"
