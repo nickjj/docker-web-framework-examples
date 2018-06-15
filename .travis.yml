@@ -43,6 +43,16 @@ script:
     || (echo 'HTTP test: fail' && exit 1)
   - docker-compose down -v
 
+  - cd ../phoenix
+  - docker-compose up --build -d
+  - sleep 30
+  - >
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
+    | grep -q '200'
+    && (echo 'HTTP test: pass' && exit 0)
+    || (echo 'HTTP test: fail' && exit 1)
+  - docker-compose down -v
+
   - cd ../webpack
   - docker-compose build
   - docker-compose run webpack yarn run build

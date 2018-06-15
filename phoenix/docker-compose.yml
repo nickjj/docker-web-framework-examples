@@ -1,0 +1,42 @@
+version: "3.6"
+
+services:
+  postgres:
+    image: "postgres:10.4-alpine"
+    env_file:
+      - ".env"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+
+  webpack:
+    build:
+      context: "."
+      dockerfile: "Dockerfile.webpack"
+    command: yarn run watch
+    ports:
+      - "8001:8001"
+    volumes:
+      - "$PWD:/app"
+      - "static:/app/priv/static"
+
+  web:
+    build: "."
+    stdin_open: true
+    tty: true
+    depends_on:
+      - "postgres"
+      - "webpack"
+    env_file:
+      - ".env"
+    ports:
+      - "8000:8000"
+    volumes:
+      - "$PWD:/app"
+      - "static:/app/priv/static"
+
+volumes:
+  postgres: {}
+  static:
+    driver_opts:
+      type: "tmpfs"
+      device: "tmpfs"
