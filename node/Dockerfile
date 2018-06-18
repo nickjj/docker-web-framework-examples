@@ -1,7 +1,7 @@
 FROM node:10.4-alpine
 LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
-RUN npm install -g yarn && mkdir /node
+RUN npm install -g yarn
 
 ARG NODE_ENV=production
 ENV NODE_ENV="${NODE_ENV}"
@@ -9,7 +9,7 @@ ENV NODE_ENV="${NODE_ENV}"
 WORKDIR /app
 
 COPY package.json *yarn* ./
-RUN yarn install && cp yarn.lock /node
+RUN yarn install && cp yarn.lock /tmp
 
 COPY . .
 

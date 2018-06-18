@@ -2,8 +2,8 @@
 
 set -e
 
-built_lock_file="/elixir/mix.lock"
-current_lock_file="/app/mix.lock"
+built_lock_file="/tmp/mix.lock"
+current_lock_file="mix.lock"
 
 function cp_built_lock_file() {
     cp "${built_lock_file}" "${current_lock_file}"
@@ -11,10 +11,9 @@ function cp_built_lock_file() {
 
 # This avoids your app mount clobbering the "real" mix.lock file that was
 # created when building your dependencies using docker build.
-#
-# See: https://github.com/nickjj/docker-web-framework-examples/issues/1
 if [ -f "${current_lock_file}" ]; then
-    if [ diff "${built_lock_file}" "${current_lock_file}" != "" ]; then
+    diff="$(diff "${built_lock_file}" "${current_lock_file}")"
+    if [ "${diff}" != "" 2>/dev/null ]; then
         cp_built_lock_file
     fi
 else
