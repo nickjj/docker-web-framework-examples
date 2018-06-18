@@ -10,6 +10,7 @@ as a guide for your Node / Express app.
 - It uses `nodemon` in development, check out the `package.json` file
 - An example root page is available at `/`
 - A health check URL was added at `/healthy`
+- Gracefully handle the `yarn.lock` file in development and production
 
 ## Trying Out the App
 

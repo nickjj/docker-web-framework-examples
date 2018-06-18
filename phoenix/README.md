@@ -7,12 +7,13 @@ as a guide for your Phoenix app.
 
 **This example app is based off the latest Phoenix 1.3.x release.**
 
-- `build_path` and `deps_path` are set to build to `/elixir` in the Docker image
+- `build_path` and `deps_path` are set to build to `/elixir` in `mix.esx`
 - Use Webpack to prepare for Phoenix 1.4 (it will be the new default)
 - Various config options were defined in `.env`
 - Database configuration is read in through ENV variables
 - An example root page is available at `/` using a `page` controller
 - A health check URL was added at `/healthy` using a `page` controller
+- Gracefully handle the `mix.lock` and `yarn.lock` files in development and production
 
 *This example app was generated with the following command:*
 

@@ -10,6 +10,7 @@ as a guide for your Webpack set up.
 - It's ready to go for SCSS and ES6 JavaScript
 - Active loaders: `babel-loader`, `sass-loader`, `post-css-loader`, `file-loader`
 - `css` files get written to their own separate bundle
+- Gracefully handle the `yarn.lock` file in development and production
 
 ## Trying Out the App
 
