@@ -39,7 +39,7 @@ libs, but they are by no means a Flask default.
 - Use `/app` to store your app's code and set it as the `WORKDIR` (if it makes sense)
 - When installing packages, take advantage of Docker’s layer caching techniques
 - If your app is a web service, `EXPOSE 8000` unless you have a strong reason not to
-- Include a `curl` driven `HEALTHCHECK` (if it makes sense)
+- Include a `wget` driven `HEALTHCHECK` (if it makes sense)
 - Stick to the `[]` syntax when supplying your `CMD` instructions
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/Dockerfile)
 and copy that style

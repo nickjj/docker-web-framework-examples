@@ -14,7 +14,7 @@ RUN yarn install && cp yarn.lock /tmp
 COPY . .
 
 EXPOSE 8000
-HEALTHCHECK CMD curl -f http://localhost:8000/healthy || exit 1
+HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
 
 RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
