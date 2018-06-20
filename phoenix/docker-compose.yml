@@ -10,17 +10,17 @@ services:
 
   webpack:
     build:
-      context: "$PWD"
+      context: "."
       dockerfile: "Dockerfile.webpack"
     command: yarn run watch
     ports:
       - "8001:8001"
     volumes:
-      - "$PWD:/app"
+      - ".:/app"
       - "static:/app/priv/static"
 
   web:
-    build: "$PWD"
+    build: "."
     depends_on:
       - "postgres"
       - "webpack"
@@ -31,7 +31,7 @@ services:
     stdin_open: True
     tty: True
     volumes:
-      - "$PWD:/app"
+      - ".:/app"
       - "static:/app/priv/static"
 
 volumes:

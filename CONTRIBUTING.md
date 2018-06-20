@@ -37,9 +37,9 @@ libs, but they are by no means a Flask default.
 - Feel free to include your own name in the `LABEL` when adding new apps
 - Only include `ARG` and `ENV` instructions if you really need them
 - Use `/app` to store your app's code and set it as the `WORKDIR` (if it makes sense)
-- Take advantage of package manager / Docker layer caching techniques
+- When installing packages, take advantage of Docker’s layer caching techniques
 - If your app is a web service, `EXPOSE 8000` unless you have a strong reason not to
-- Always include a `curl` driven `HEALTHCHECK`
+- Include a `curl` driven `HEALTHCHECK` (if it makes sense)
 - Stick to the `[]` syntax when supplying your `CMD` instructions
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/Dockerfile)
 and copy that style
@@ -50,8 +50,8 @@ and copy that style
 - Alphabetize each service's properties
 - Double quote all strings and use `{}` for empty hashes
 - Pin versions to at least the minor version, example: `10.4-alpine` not `10-alpine`
-- Use `$PWD` instead of "." for when you need the current directory's path
-- Prefer `build: "$PWD"` unless you need to use `args` or some other sub-property
+- Use `.` instead of `$PWD` for when you need the current directory's path
+- Prefer `build: "."` unless you need to use `args` or some other sub-property
 - If your service is a web service, publish port `8000` unless it doesn't make sense to
 - When in doubt, look at the
 [other examples](https://github.com/nickjj/docker-web-framework-examples/blob/master/rails/docker-compose.yml)

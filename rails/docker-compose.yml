@@ -11,7 +11,7 @@ services:
 
   web:
     build:
-      context: "$PWD"
+      context: "."
       args:
         - RAILS_ENV=development
     depends_on:
@@ -22,7 +22,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - "$PWD:/app"
+      - ".:/app"
 
 volumes:
   postgres: {}

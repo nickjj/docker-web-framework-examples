@@ -2,9 +2,9 @@ version: "3.6"
 
 services:
   webpack:
-    build: "$PWD"
+    build: "."
     command: yarn run watch
     ports:
       - "8000:8000"
     volumes:
-      - "$PWD:/app"
+      - ".:/app"
