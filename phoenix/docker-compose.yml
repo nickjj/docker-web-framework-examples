@@ -13,8 +13,6 @@ services:
       context: "."
       dockerfile: "Dockerfile.webpack"
     command: yarn run watch
-    ports:
-      - "8001:8001"
     volumes:
       - ".:/app"
       - "static:/app/priv/static"
