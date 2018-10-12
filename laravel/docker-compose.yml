@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  web:
+    build: "."
+    env_file: ".env"
+    ports:
+      - "8000:80"
+    volumes:
+      - ".:/var/www/html"
