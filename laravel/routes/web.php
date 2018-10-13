@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\HTTP\Response;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,13 +14,11 @@
  */
 
 Route::get('/', function () {
-    $environment = ucfirst(App::environment());
+    $environment = ucfirst(app()->environment());
 
     return "Hello World ({$environment})";
 });
 
-Route::get('/healthy', function () {
-    $environment = ucfirst(App::environment());
-
-    return "Hello World ({$environment})";
+Route::get('/healthy', function (): Response {
+    return response('', 200);
 });

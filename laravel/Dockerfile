@@ -36,6 +36,7 @@ RUN yarn install && yarn production
 FROM php:7.2-apache
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+COPY apache/ /etc/apache2/sites-available/
 WORKDIR /var/www/html
 
 COPY . .
@@ -45,10 +46,8 @@ COPY --from=frontend /app/public/css/ public/css/
 COPY --from=frontend /app/mix-manifest.json .
 
 # Fix permissions so both app and Apache can use files
-RUN chgrp -R www-data storage bootstrap/cache \
+RUN a2enmod rewrite \
+    && chgrp -R www-data storage bootstrap/cache \
     && chmod -R ug+rwx storage bootstrap/cache
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/sites-available/*.conf \
-    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+CMD ["apache2-foreground"]
