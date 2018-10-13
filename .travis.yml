@@ -8,6 +8,9 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
+env:
+  - ENV=testing
+
 script:
   - touch rails/.env.production node/.env.production
 
@@ -66,11 +69,11 @@ script:
     || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
 
-  - cd ../laravel
-  - cp .env.example .env
-  - docker-compose up --build -d
+  - cd ../laravel && export ENV=testing && envsubst < .env.example > .env
+  - docker-compose build
+  - docker-compose run web php artisan key:generate
+  - docker-compose up -d
   - sleep 30
-  - docker-compose exec web php artisan key:generate
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
     | grep -q '200'
