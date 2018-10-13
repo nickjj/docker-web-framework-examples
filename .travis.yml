@@ -4,7 +4,7 @@ services: "docker"
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
@@ -72,7 +72,7 @@ script:
   - docker-compose exec web php artisan key:generate
   - sleep 30
   - >
-    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
     | grep -q '200'
     && (echo 'HTTP test: pass' && exit 0)
     || (echo 'HTTP test: fail' && exit 1)
