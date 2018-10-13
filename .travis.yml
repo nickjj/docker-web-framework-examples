@@ -69,8 +69,8 @@ script:
   - cd ../laravel
   - cp .env.example .env
   - docker-compose up --build -d
-  - docker-compose exec web php artisan key:generate
   - sleep 30
+  - docker-compose exec web php artisan key:generate
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
     | grep -q '200'
