@@ -6,13 +6,14 @@ A working example that's filled with Docker best practices so you can use this a
 
 **This example app is based off the latest Laravel 5.7 release.**
 
-- Using PHP 7.2 and Apache as the base for environment
+- Using PHP 7.2 as the base for environment
+- Laravel running with built-in development server on port 8000
 - Multi-stage build with Composer building backend dependencies while Yarn handles the frontend assets
 - Artifacts from the previous stages are deployed to the application
 
 ## Modifications
 
-You can switch the `php:7.2-apache` image in Dockerfile with your custom image that could use, for example, nginx and come with Yarn for development.
+You can switch the `php:7.2-cli-alpine` image in Dockerfile with your custom image that could use, for example, nginx and come with Yarn for development.
 
 ## Trying Out the App
 

@@ -1,10 +1,35 @@
 version: '3.7'
 
 services:
+  db:
+    image: "mariadb:10.3"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_DATABASE: "laravel"
+    ports:
+      - "33060:3306"
+    volumes:
+      - "db_data:/var/lib/mysql"
+
+  redis:
+    image: "redis:4.0-alpine"
+    ports:
+      - "63790:6379"
+    volumes:
+      - "redis_data:/data"
+
   web:
     build: "."
     env_file: ".env"
     ports:
-      - "8000:80"
+      - "8000:8000"
     volumes:
       - ".:/var/www/html"
+    depends_on:
+      - "db"
+      - "redis"
+
+volumes:
+  db_data: {}
+  redis_data: {}
+

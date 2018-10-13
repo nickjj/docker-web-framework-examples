@@ -69,10 +69,8 @@ script:
     || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
 
-  - cd ../laravel && export ENV=testing && envsubst < .env.example > .env
-  - docker-compose build
-  - docker-compose run web php artisan key:generate
-  - docker-compose up -d
+  - cd ../laravel && envsubst < .env.example > .env
+  - docker-compose up --build -d
   - sleep 30
   - >
     curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
