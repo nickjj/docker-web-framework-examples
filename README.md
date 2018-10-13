@@ -48,6 +48,7 @@ open a PR.
 - [Phoenix](https://github.com/nickjj/docker-web-framework-examples/tree/master/phoenix)
 - [Rails](https://github.com/nickjj/docker-web-framework-examples/tree/master/rails)
 - [Webpack](https://github.com/nickjj/docker-web-framework-examples/tree/master/webpack)
+- [Laravel](https://github.com/nickjj/docker-web-framework-examples/tree/master/laravel)
 
 ## Contributing
 
