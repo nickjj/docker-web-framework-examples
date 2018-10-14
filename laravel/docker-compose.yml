@@ -20,16 +20,17 @@ services:
 
   web:
     build: "."
-    env_file: ".env"
+    env_file:
+      - ".env"
+      - ".env.production"
+    depends_on:
+      - "db"
+      - "redis"
     ports:
       - "8000:8000"
     volumes:
       - ".:/var/www/html"
-    depends_on:
-      - "db"
-      - "redis"
 
 volumes:
   db_data: {}
   redis_data: {}
-

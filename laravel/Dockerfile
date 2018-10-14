@@ -54,4 +54,5 @@ RUN chmod +x scripts/wait-for-it.sh docker-entrypoint.sh
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
 EXPOSE 8000
+HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
 CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]

@@ -14,9 +14,7 @@ use Illuminate\HTTP\Response;
  */
 
 Route::get('/', function () {
-    $environment = ucfirst(app()->environment());
-
-    return "Hello World ({$environment})";
+    return "Hello World with APP_ENV=" . App::environment();
 });
 
 Route::get('/healthy', function (): Response {
