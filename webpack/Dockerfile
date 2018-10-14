@@ -1,4 +1,4 @@
-FROM node:10.12-alpine
+FROM node:9.7-alpine
 LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
 RUN npm install -g yarn
