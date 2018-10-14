@@ -1,18 +1,25 @@
----
+sudo: required
+services:
+  - docker
 
-services: "docker"
+env:
+  - DOCKER_COMPOSE_VERSION=1.22.0
 
+# Update Docker to latest version
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+# Update Docker Compose to latest version
 before_install:
   - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-env:
-  - ENV=testing
-
 script:
-  - touch rails/.env.production node/.env.production
+  - touch rails/.env.production node/.env.production laravel/.env.production
 
   - cd flask
   - docker-compose up --build -d
