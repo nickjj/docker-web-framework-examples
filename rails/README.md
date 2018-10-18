@@ -12,7 +12,6 @@ as a guide for your Rails app.
 - `config/puma.rb` is pre-configured with ENV variables
 - An example root page is available at `/` using a `hello` controller
 - A health check URL was added at `/healthy` (check `config/routes.rb`)
-- Gracefully handle the `Genfile.lock` file in development and production
 
 *This example app was generated with the following command:*
 

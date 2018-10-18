@@ -9,14 +9,11 @@ ENV NODE_ENV="${NODE_ENV}"
 WORKDIR /app
 
 COPY package.json *yarn* ./
-RUN yarn install && cp yarn.lock /tmp
+RUN yarn install
 
 COPY . .
 
 EXPOSE 8000
 HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
-
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 CMD ["yarn", "run", "production"]

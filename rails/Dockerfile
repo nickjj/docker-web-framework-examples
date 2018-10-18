@@ -9,7 +9,7 @@ ENV RAILS_ENV="${RAILS_ENV}"
 WORKDIR /app
 
 COPY Gemfile* ./
-RUN bundle install && cp Gemfile.lock /tmp
+RUN bundle install
 
 COPY . .
 
@@ -18,8 +18,5 @@ HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
 
 # Only precompile assets when not in development mode.
 RUN if [ "${RAILS_ENV}" != "development" ]; then rails assets:precompile; fi
-
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 CMD ["puma", "-C", "config/puma.rb"]

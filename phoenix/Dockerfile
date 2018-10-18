@@ -7,14 +7,11 @@ WORKDIR /app
 
 COPY mix* ./
 RUN mix local.hex --force && mix local.rebar --force \
-    && mix deps.get && mix deps.compile && cp mix.lock /tmp
+    && mix deps.get && mix deps.compile
 
 COPY . .
 
 EXPOSE 8000
 HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
-
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 CMD ["mix", "phx.server"]

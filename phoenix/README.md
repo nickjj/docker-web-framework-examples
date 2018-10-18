@@ -13,7 +13,6 @@ as a guide for your Phoenix app.
 - Database configuration is read in through ENV variables
 - An example root page is available at `/` using a `page` controller
 - A health check URL was added at `/healthy` using a `page` controller
-- Gracefully handle the `mix.lock` and `yarn.lock` files in development and production
 
 *This example app was generated with the following command:*
 
