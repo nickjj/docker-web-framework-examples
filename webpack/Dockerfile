@@ -6,11 +6,8 @@ RUN npm install -g yarn
 WORKDIR /app/assets
 
 COPY assets/package.json assets/*yarn* ./
-RUN yarn install && cp yarn.lock /tmp
+RUN yarn install
 
 COPY . .
-
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
 
 CMD ["yarn", "run", "build"]
