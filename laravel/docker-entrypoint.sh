@@ -4,11 +4,9 @@ set -e
 ROOT=$(dirname "$0")
 DATABASE="db:3306"
 
-[[ ! -f .env ]] && envsubst < .env.example > .env
-
 source "${ROOT}/.env"
 
-[[ -z "${APP_KEY}" ]] && php artisan key:generate
+[[ -z "${APP_KEY}" ]] && php artisan key:generate && source "${ROOT}/.env"
 
 bash scripts/wait-for-it.sh "${DATABASE}" --strict -- php artisan migrate
 
