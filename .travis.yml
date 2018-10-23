@@ -76,11 +76,11 @@ script:
     || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
 
-  - cd ../laravel && envsubst < .env.example > .env
+  - cd ../laravel
   - docker-compose up --build -d
   - sleep 30
   - >
-    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:9000/healthy
     | grep -q '200'
     && (echo 'HTTP test: pass' && exit 0)
     || (echo 'HTTP test: fail' && exit 1)

@@ -1,11 +1,14 @@
-# Stage 1: Backend app
-FROM composer:1.7 as vendor
-
-LABEL maintainer="Niko Heikkilä <yo@nikoheikkila.fi>"
+FROM php:7.2-fpm-alpine
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
-
 WORKDIR /app
+
+RUN apk add --update bash curl \
+    && docker-php-ext-install \
+    pdo_mysql
+
+RUN curl -sSL https://getcomposer.org/composer.phar -o /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer
 
 COPY composer.json composer.lock ./
 RUN composer install \
@@ -17,42 +20,14 @@ RUN composer install \
     --prefer-dist
 
 COPY . .
-RUN composer dump-autoload --optimize
-
-# Stage 2: Frontend assets
-FROM node:10.12-alpine as frontend
-
-RUN mkdir -p /app/public
-
-COPY package.json webpack.mix.js yarn.lock /app/
-COPY resources/js/ /app/resources/js/
-COPY resources/sass/ /app/resources/sass/
-
-WORKDIR /app
-
-RUN yarn install && yarn production
-
-# Stage 3: Final Application
-FROM php:7.2-cli-alpine
-
-RUN apk add --update bash \
-    && docker-php-ext-install \
-    pdo \
-    pdo_mysql
-
-WORKDIR /app
-
-# Copy assets from previous stages
-COPY . .
-COPY --from=vendor /app/vendor/ vendor/
-COPY --from=frontend /app/public/js/ public/js/
-COPY --from=frontend /app/public/css/ public/css/
-COPY --from=frontend /app/mix-manifest.json .
+RUN composer dump-autoload --optimize \
+    && php artisan key:generate
 
 RUN chmod +x scripts/wait-for-it.sh docker-entrypoint.sh
-
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-EXPOSE 8000
-HEALTHCHECK CMD wget -q -O /dev/null http://localhost:8000/healthy || exit 1
-CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 9000
+HEALTHCHECK CMD wget -q -O /dev/null http://localhost:9000/healthy || exit 1
+LABEL maintainer="Niko Heikkilä <yo@nikoheikkila.fi>"
+
+CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "9000"]

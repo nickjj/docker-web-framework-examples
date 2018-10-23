@@ -1,36 +1,40 @@
-version: '3.7'
+version: "3.7"
 
 services:
-  db:
+
+  mariadb:
     image: "mariadb:10.3"
-    environment:
-      MYSQL_ROOT_PASSWORD: "secret"
-      MYSQL_DATABASE: "laravel"
-    ports:
-      - "33060:3306"
+    env_file:
+      - ".env"
     volumes:
-      - "db_data:/var/lib/mysql"
+      - "mariadb:/var/lib/mysql"
 
   redis:
     image: "redis:4.0-alpine"
-    ports:
-      - "63790:6379"
     volumes:
-      - "redis_data:/data"
+      - "redis:/data"
+
+  webpack:
+    build:
+      context: "."
+      dockerfile: "Dockerfile.webpack"
+    command: yarn prod
+    volumes:
+      - ".:/app"
 
   web:
-    build: "."
+    build:
+      context: "."
+    depends_on:
+      - "mariadb"
+      - "redis"
     env_file:
       - ".env"
-      - ".env.production"
-    depends_on:
-      - "db"
-      - "redis"
     ports:
-      - "8000:8000"
+      - "9000:9000"
     volumes:
       - ".:/var/www/html"
 
 volumes:
-  db_data: {}
-  redis_data: {}
+  mariadb: {}
+  redis: {}
