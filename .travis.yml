@@ -84,4 +84,12 @@ script:
     | grep -q '200'
     && (echo 'HTTP test: pass' && exit 0)
     || (echo 'HTTP test: fail' && exit 1)
+  - >
+    cat public/css/app.css
+    && (echo 'CSS file test: pass' && exit 0)
+    || (echo 'CSS file test: fail' && exit 1)
+  - >
+    cat public/js/app.js
+    && (echo 'JS file test: pass' && exit 0)
+    || (echo 'JS file test: fail' && exit 1)
   - docker-compose down -v
