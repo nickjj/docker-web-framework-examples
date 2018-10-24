@@ -1,19 +1,21 @@
 # An Example Laravel + Docker Application
 
-A working example that's filled with Docker best practices so you can use this as a guide for your Laravel application. Thanks to **Paul Redmond** from Laravel News fame for this [post](https://laravel-news.com/multi-stage-docker-builds-for-laravel).
+A working example that's filled with Docker best practices so you can use this
+as a guide for your Laravel application. Thanks to **Paul Redmond** from
+Laravel News fame for this [post](https://laravel-news.com/multi-stage-docker-builds-for-laravel).
 
 ## Defaults
 
 **This example app is based off the latest Laravel 5.7 release.**
 
-- Using PHP 7.2 as the base for environment
-- Laravel running with built-in development server on port 8000
-- Multi-stage build with Composer building backend dependencies while Yarn handles the frontend assets
-- Artifacts from the previous stages are deployed to the application
+- Using PHP 7.2 FPM image as the base for environment
+- Laravel running with built-in development server on port 9000
+- Webpack (_Laravel Mix_) running on its own container watching files
 
 ## Modifications
 
-You can switch the `php:7.2-cli-alpine` image in Dockerfile with your custom image that could use, for example, nginx and come with Yarn for development.
+You may try out different configurations with Webpack, install additional
+packages or even hook this stack with nginx and certificates without hassle.
 
 ## Trying Out the App
 
@@ -21,16 +23,23 @@ Follow the [getting started](https://github.com/nickjj/docker-web-framework-exam
 
 ```sh
 cd laravel
-docker-compose up -d
+docker-compose up --build -d
 ```
+
+Note that the Laravel container will first poll for the database availability
+and then launch the development server. Typically, it should not take more
+than a couple of seconds to be usable.
 
 ### Viewing the Example Web Page
 
-Open <http://localhost:8000> in your browser and you should see a page containing _Hello World_ and your environment.
+Open <http://localhost:9000> in your browser and you should see a page
+containing _Hello World_ and your environment.
 
 ## Learn More about Docker with the Dive into Docker Course
 
-This set up is ready to go but if you're new to Docker you may want to spend some time learning the Docker fundamentals so you fully understand how Docker works and how to expand on this example project.
+This set up is ready to go but if you're new to Docker you may want to spend
+some time learning the Docker fundamentals so you fully understand how Docker
+works and how to expand on this example project.
 
 **If you like learning by video, check out the Dive into Docker course at
 [https://diveintodocker.com](https://diveintodocker.com??utm_source=github&utm_medium=docker-examples&utm_campaign=webpack)**.
@@ -49,7 +58,10 @@ applications.
 
 ### About the Dive into Docker Author
 
-Hey, I'm Nick Janetakis. I've been using Docker in production since 2014 and over the years I've helped boat loads of people apply Docker to their
-apps while doing freelance work. Also, this course has helped thousands of people learn Docker.
+Hey, I'm Nick Janetakis. I've been using Docker in production since 2014 and
+over the years I've helped boat loads of people apply Docker to their apps
+while doing freelance work. Also, this course has helped thousands of people
+learn Docker.
 
-I'm also part of the Docker Captains group (Docker reached out to me to join their team as a trusted content creator).
+I'm also part of the Docker Captains group (Docker reached out to me to join
+their team as a trusted content creator).
