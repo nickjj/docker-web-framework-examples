@@ -18,9 +18,10 @@ services:
     build:
       context: "."
       dockerfile: "Dockerfile.webpack"
-    command: yarn prod
+    command: "yarn watch-poll"
     volumes:
       - ".:/app"
+      - "node_modules:/app/node_modules"
 
   web:
     build:
@@ -38,3 +39,4 @@ services:
 volumes:
   mariadb: {}
   redis: {}
+  node_modules: {}

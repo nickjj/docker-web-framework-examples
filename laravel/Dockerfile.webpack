@@ -1,16 +1,18 @@
-FROM node:10.12-slim
+FROM node:10.12-alpine
+
+ENV NODE_ENV=development
 
 RUN npm install -g yarn
 
 WORKDIR /app
 
-COPY package.json webpack.mix.js *yarn* ./
+COPY package.json webpack.mix.js yarn.lock ./
 COPY resources/js/ ./resources/js/
 COPY resources/sass/ ./resources/sass/
 
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
 LABEL maintainer="Niko Heikkilä <yo@nikoheikkila.fi>"
-CMD ["yarn", "run", "dev"]
+CMD ["yarn", "run", "development"]
