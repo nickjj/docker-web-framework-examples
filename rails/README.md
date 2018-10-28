@@ -49,7 +49,7 @@ time learning the Docker fundamentals so you fully understand how Docker works
 and how to expand on this example project.
 
 **If you like learning by video, check out the Dive into Docker course at
-[https://diveintodocker.com](https://diveintodocker.com??utm_source=github&utm_medium=docker-examples&utm_campaign=rails)**.
+[https://diveintodocker.com](https://diveintodocker.com?utm_source=github&utm_medium=docker-examples&utm_campaign=rails)**.
 
 It will take you from *"what is Docker?"* to happily Dockerizing your own Rails
 applications.

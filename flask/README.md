@@ -15,7 +15,7 @@ configured in such a way that the interactive debugger works with gunicorn
 - A health check URL was added at `/healthy`
 
 Looking for a more complete Flask application? Check out the
-[Build a SAAS App with Flask course](https://buildasaasappwithflask.com??utm_source=github&utm_medium=docker-examples&utm_campaign=flask).
+[Build a SAAS App with Flask course](https://buildasaasappwithflask.com?utm_source=github&utm_medium=docker-examples&utm_campaign=flask).
 
 ## Trying Out the App
 
@@ -43,7 +43,7 @@ time learning the Docker fundamentals so you fully understand how Docker works
 and how to expand on this example project.
 
 **If you like learning by video, check out the Dive into Docker course at
-[https://diveintodocker.com](https://diveintodocker.com??utm_source=github&utm_medium=docker-examples&utm_campaign=flask)**.
+[https://diveintodocker.com](https://diveintodocker.com?utm_source=github&utm_medium=docker-examples&utm_campaign=flask)**.
 
 It will take you from *"what is Docker?"* to happily Dockerizing your own Flask
 applications.
