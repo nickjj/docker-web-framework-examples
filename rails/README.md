@@ -27,7 +27,7 @@ from the main `README.md` file and then:
 
 ```sh
 cd rails
-docker-compose up
+docker-compose up --build
 
 # Open a second terminal and create your database:
 docker-compose exec web rails db:create

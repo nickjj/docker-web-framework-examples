@@ -18,7 +18,7 @@ from the main `README.md` file and then:
 
 ```sh
 cd webpack
-docker-compose up
+docker-compose up --build
 ```
 
 ### Viewing the Example Web Page

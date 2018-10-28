@@ -18,7 +18,7 @@ from the main `README.md` file and then:
 
 ```sh
 cd node
-docker-compose up
+docker-compose up --build
 ```
 
 ### Using Docker for Windows, Mac or Linux?
