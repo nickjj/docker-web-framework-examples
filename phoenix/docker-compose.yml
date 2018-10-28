@@ -26,8 +26,8 @@ services:
       - ".env"
     ports:
       - "8000:8000"
-    stdin_open: True
-    tty: True
+    stdin_open: true
+    tty: true
     volumes:
       - ".:/app"
       - "static:/app/priv/static"
