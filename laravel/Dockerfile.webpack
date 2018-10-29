@@ -1,4 +1,5 @@
 FROM node:10.12-alpine
+LABEL maintainer="Niko Heikkilä <yo@nikoheikkila.fi>"
 
 ENV NODE_ENV=development
 
@@ -6,13 +7,12 @@ RUN npm install -g yarn
 
 WORKDIR /app
 
-COPY package.json webpack.mix.js yarn.lock ./
+COPY package.json webpack.mix.js *yarn* ./
 COPY resources/js/ ./resources/js/
 COPY resources/sass/ ./resources/sass/
 
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 COPY . .
 
-LABEL maintainer="Niko Heikkilä <yo@nikoheikkila.fi>"
-CMD ["yarn", "run", "development"]
+CMD ["yarn", "run", "watch"]

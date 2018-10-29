@@ -80,7 +80,7 @@ script:
   - docker-compose up --build -d
   - sleep 30
   - >
-    curl -s -o /dev/null -w "%{http_code}" http://localhost:9000/healthy
+    curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/healthy
     | grep -q '200'
     && (echo 'HTTP test: pass' && exit 0)
     || (echo 'HTTP test: fail' && exit 1)

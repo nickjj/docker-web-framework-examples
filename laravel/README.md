@@ -1,39 +1,46 @@
 # An Example Laravel + Docker Application
 
 A working example that's filled with Docker best practices so you can use this
-as a guide for your Laravel application. Thanks to **Paul Redmond** from
-Laravel News fame for this [post](https://laravel-news.com/multi-stage-docker-builds-for-laravel).
+as a guide for your Laravel app.
 
 ## Defaults
 
 **This example app is based off the latest Laravel 5.7 release.**
 
-- Using PHP 7.2 FPM image as the base for environment
-- Laravel running with built-in development server on port 9000
-- Webpack (_Laravel Mix_) running on its own container watching files
+- An example root page is available at `/` in `routes/web.php`
+- A health check URL was added at `/healthy` in `routes/web.php`
+- Webpack is running inside its own container polling for changes
 
-## Modifications
+_This example app was generated with the following commands:_
 
-You may try out different configurations with Webpack, install additional
-packages or even hook this stack with nginx and certificates without hassle.
+```bash
+composer create-project --prefer-dist laravel/laravel laravel
+```
 
 ## Trying Out the App
 
-Follow the [getting started](https://github.com/nickjj/docker-web-framework-examples#getting-started) section from the main `README.md` file and then:
+Follow the [getting started](https://github.com/nickjj/docker-web-framework-examples#getting-started) section
+from the main `README.md` file and then:
 
-```sh
+```bash
 cd laravel
 docker-compose up --build -d
 ```
 
-Note that the Laravel container will first poll for the database availability
-and then launch the development server. Typically, it should not take more
-than a couple of seconds to be usable.
+Once all containers have been started you can run the database migrations:
 
-### Viewing the Example Web Page
+```bash
+docker-compose exec web php artisan migrate
+```
 
-Open <http://localhost:9000> in your browser and you should see a page
-containing _Hello World_ and your environment.
+### Using Docker for Windows, Mac or Linux?
+
+Check out `http://localhost:8000` in your browser.
+
+### Using Docker Toolbox?
+
+Check out `http://192.168.99.100:8000` in your browser, or whatever your Docker
+Machine IP address is.
 
 ## Learn More about Docker with the Dive into Docker Course
 
@@ -42,7 +49,7 @@ some time learning the Docker fundamentals so you fully understand how Docker
 works and how to expand on this example project.
 
 **If you like learning by video, check out the Dive into Docker course at
-[https://diveintodocker.com](https://diveintodocker.com??utm_source=github&utm_medium=docker-examples&utm_campaign=webpack)**.
+[https://diveintodocker.com](https://diveintodocker.com?utm_source=github&utm_medium=docker-examples&utm_campaign=laravel)**.
 
 It will take you from *"what is Docker?"* to happily Dockerizing your own
 applications.
