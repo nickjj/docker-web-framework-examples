@@ -1,41 +1,39 @@
-version: '3.7'
+version: "3.7"
 
 services:
   mariadb:
     env_file:
-      - '.env'
-    image: 'mariadb:10.3'
+      - ".env"
+    image: "mariadb:10.3"
     volumes:
-      - 'mariadb:/var/lib/mysql'
+      - "mariadb:/var/lib/mysql"
 
   redis:
-    image: 'redis:5.0-alpine'
+    image: "redis:5.0-alpine"
     volumes:
-      - 'redis:/data'
+      - "redis:/data"
 
   webpack:
     build:
-      context: '.'
-      dockerfile: 'Dockerfile.webpack'
-    command: 'yarn run watch'
+      context: "."
+      dockerfile: "Dockerfile.webpack"
+    command: "yarn run watch"
     volumes:
-      - '.:/app'
-      - 'node_modules:/app/node_modules'
+      - ".:/app"
 
   web:
     build:
-      context: '.'
+      context: "."
     depends_on:
-      - 'mariadb'
-      - 'redis'
+      - "mariadb"
+      - "redis"
     env_file:
-      - '.env'
+      - ".env"
     ports:
-      - '8000:8000'
+      - "8000:8000"
     volumes:
-      - '.:/var/www/html'
+      - ".:/var/www/html"
 
 volumes:
   mariadb: {}
   redis: {}
-  node_modules: {}
