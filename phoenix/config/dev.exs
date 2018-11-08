@@ -13,16 +13,6 @@ config :hello, HelloWeb.Endpoint,
   check_origin: false,
   watchers: []
 
-# watchers: [
-#   node: [
-#     "node_modules/webpack/bin/webpack.js",
-#     "--mode",
-#     "development",
-#     "--watch-stdin",
-#     cd: Path.expand("../assets", __DIR__)
-#   ]
-# ]
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
