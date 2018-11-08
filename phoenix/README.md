@@ -5,10 +5,9 @@ as a guide for your Phoenix app.
 
 ## Defaults
 
-**This example app is based off the latest Phoenix 1.3.x release.**
+**This example app is based off the latest Phoenix 1.4.x release.**
 
 - `build_path` and `deps_path` are set to build to `/elixir` in `mix.esx`
-- Use Webpack to prepare for Phoenix 1.4 (it will be the new default)
 - Various config options were defined in `.env`
 - Database configuration is read in through ENV variables
 - An example root page is available at `/` using a `page` controller
@@ -16,7 +15,7 @@ as a guide for your Phoenix app.
 
 *This example app was generated with the following command:*
 
-`mix phx.new --no-brunch hello`
+`mix phx.new hello`
 
 ## Trying Out the App
 

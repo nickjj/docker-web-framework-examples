@@ -1,3 +1,4 @@
+var CopyWebpackPlugin = require("copy-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var merge = require("webpack-merge");
 var webpack = require("webpack");
@@ -8,7 +9,8 @@ var production = env === "production";
 var node_modules_dir = "/node_modules"
 
 var plugins = [
-  new ExtractTextPlugin("css/app.css")
+  new ExtractTextPlugin("css/app.css"),
+  new CopyWebpackPlugin([{ from: 'static/', to: '../static' }])
 ]
 
 if (production) {
@@ -79,8 +81,8 @@ var common = {
 module.exports = [
   merge(common, {
     entry: [
-      __dirname + "/app/app.scss",
-      __dirname + "/app/app.js"
+      __dirname + "/css/app.scss",
+      __dirname + "/js/app.js"
     ],
     output: {
       path: __dirname + "/../priv/static",

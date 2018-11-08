@@ -1,11 +1,5 @@
 defmodule Hello.Repo do
-  use Ecto.Repo, otp_app: :hello
-
-  @doc """
-  Dynamically loads the repository url from the
-  DATABASE_URL environment variable.
-  """
-  def init(_, opts) do
-    {:ok, Keyword.put(opts, :url, System.get_env("DATABASE_URL"))}
-  end
+  use Ecto.Repo,
+    otp_app: :hello,
+    adapter: Ecto.Adapters.Postgres
 end
