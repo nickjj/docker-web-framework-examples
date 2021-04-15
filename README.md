@@ -1,5 +1,25 @@
 [![Build Status](https://travis-ci.com/nickjj/docker-web-framework-examples.svg?branch=master)](https://travis-ci.com/nickjj/docker-web-framework-examples)
 
+This repo is no longer maintained but the idea of having up to date example
+apps is still something I'm actively working on.
+
+All of the examples from this repo (and more) have been moved into their own
+dedicated repos and have been improved upon.
+
+#### You can find new and up to date examples here:
+
+- https://github.com/nickjj/docker-flask-example
+- https://github.com/nickjj/docker-django-example
+- https://github.com/nickjj/docker-rails-example
+- https://github.com/nickjj/docker-node-example
+- https://github.com/nickjj/docker-phoenix-example
+
+More examples are on the way!
+
+---
+---
+---
+
 # Example Apps That Demonstrate How to Use Docker with Your Favorite Web Frameworks
 
 *But aren't there a million tutorials out there that do this already?*
