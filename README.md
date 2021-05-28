@@ -13,6 +13,7 @@ dedicated repos and have been improved upon.
 - https://github.com/nickjj/docker-rails-example
 - https://github.com/nickjj/docker-node-example
 - https://github.com/nickjj/docker-phoenix-example
+- https://github.com/oleksandra-holovina/docker-play-example (Thanks [Lexie](https://www.linkedin.com/in/oleksandra-holovina-287740b0/)!)
 
 More examples are on the way!
 
